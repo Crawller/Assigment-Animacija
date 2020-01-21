@@ -1,0 +1,118 @@
+/* Prikazanu animaciju je potrebno realizovati isključivo korišćenjem HTML i CSS jezika i pri tome koristiti pristupe koji su obrađeni u dosadašnjem toku kursa. Za realizaciju prikazane animacije, potrebno je upotrebiti sledeće pojmove CSS jezika:
+
+linearni gradijenti;
+filteri;
+CSS animacije;
+2D CSS transformacije;
+Pseudoelementi.
+
+Boje koje su korišćene za realizaciju prikazanog primera su:
+
+na krugu - #fb5dad, #55fb9f, #b97aff;
+boja pozadine - #050210.
+
+Obratite pažnju na to da je glow iza animiranog kruga sačinjen iz više boja, koje prate boje kruga.
+*/
+
+body {
+    background-color:  #050210 ;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+}
+
+   
+.shadow_ring {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    height:450px;
+    width: 450px;
+    margin-top: -225px;
+    margin-left: -225px;
+    border-radius: 50%;
+    background-image: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+    animation: outercircle 1s linear infinite;
+    filter: blur(30px);   
+}
+
+.ring {
+    
+    position:absolute;
+    height:400px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -200px;
+    border-radius: 50%;
+    background-image: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+    animation: outercircle 1s linear infinite;
+}
+
+.inner_ring {
+    position: absolute;
+    top:50%;
+    left:50%;
+    background-color:#050210;
+    height:350px;
+    width: 350px;
+    margin-top: -175px;
+    margin-left: -175px;
+    border-radius: 50%;
+}
+
+.center {
+    transform: translate(-50%.-50%);
+    position: absolute;
+    top:50%;
+    left:50%;   
+    
+}
+
+.pulse {
+    position: absolute;
+    height:2px;
+    width: 2px;
+    border-radius: 50%;
+    animation: animate 2s linear infinite;  
+    margin-top: -1px;
+    margin-left: -1px;
+    filter: invert(5%);
+}
+    
+
+
+
+
+
+@keyframes animate {
+    0% {
+        box-shadow: 0 0 0 0 rgba(3, 4, 58, .7), 0 0 0 0 rgba(3, 4, 58, .7) ;
+       
+    }
+    
+    40% {
+        box-shadow: 0 0 0 175px rgba(3, 4, 58, .5), 0 0 0 100px rgba(3, 4, 58, .5);
+        
+    }
+    80% {
+        box-shadow: 0 0 0 175px rgba(3, 4, 58, 0), 0 0 0 150px rgba(3, 4, 58, 0);
+       
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(3, 4, 58, 0), 0 0 0 0 rgba(3, 4, 58, 0);
+        
+    }
+}
+
+
+@keyframes outercircle {
+   0% {
+       transform: rotate(0deg);
+   }
+
+   100% {
+       transform: rotate(360deg);
+   }
+}
